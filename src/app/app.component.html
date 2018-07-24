@@ -1,0 +1,18 @@
+<h2>Currency Converter</h2>
+From :<input id="from" type="text" (keyup.enter)="fromValueChanged(fromInput.value)" [(ngModel)]='from_value' #fromInput>
+<select required [(ngModel)]='default_from' (ngModelChange)='fromSelected($event)'>
+	<option *ngFor="let currency_name of this.currency_names" [ngValue]="currency_name">{{currency_name}}</option>
+</select>
+<br>
+To :<input id="to" type="text" (keyup.enter)="toValueChanged(toInput.value)" [(ngModel)]='to_value' #toInput>
+<select required [(ngModel)]='default_to' (ngModelChange)='toSelected($event)'>
+	<option *ngFor="let currency_name of this.currency_names" [ngValue]="currency_name">{{currency_name}}</option>
+</select>
+<br>
+<div>{{graphString}}</div>
+
+
+
+
+<br>
+<cy-graph [elements]="this.graphValues" *ngIf="this.graphValues"></cy-graph>
